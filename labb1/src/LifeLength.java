@@ -12,12 +12,19 @@ public class LifeLength {
     // System.out.println("f1="+f1(n)+" f2="+f2(n)+" f4="+f4(n)+" f8="+f8(n)+" f16="+f16(n)+" f32="+f32(n));
 
     // Task 3:
-    System.out.println(iterateF(3, 5));
-    System.out.println(iterateF(42, 3));
-    System.out.println(iterateF(1, 3));
+    // System.out.println(iterateF(3, 5));
+    // System.out.println(iterateF(42, 3));
+    // System.out.println(iterateF(1, 3));
 
     // Task 4:
+    // for (int i = 1; i <= 15; i++) {
+    //   System.out.println("The life length of "+i+" is "+iterLifeLength(i)+".");
+    // }
 
+    // Task 5:
+
+
+    input.close();
   }
 
   public static int f1(int a0) {

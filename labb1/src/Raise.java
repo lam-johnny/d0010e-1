@@ -59,7 +59,7 @@ public class Raise {
 // 2.
 // Graph: https://cdn.discordapp.com/attachments/489085929726935041/933761693916467210/unknown.png
 //
+// 3. None(k) = k
 //
-//
-//
+// 4. Nhalf(k) = floor(log2(k)) + 1
 //

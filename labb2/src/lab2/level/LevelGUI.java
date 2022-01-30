@@ -1,4 +1,4 @@
-package level;
+package lab2.level;
 
 import java.awt.Color;
 import java.awt.Dimension;

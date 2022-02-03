@@ -1,4 +1,5 @@
 package lab2;
+
 import java.awt.Color;
 import java.util.Random;
 
@@ -8,21 +9,26 @@ import lab2.level.Room;
 
 public class Driver {
 
-	public void run() {
-		Random r = new Random();
-		int numRooms = r.nextInt(5) + 3; // Random number of rooms between 3 and 8
-		Room[] rooms = new Room[numRooms];
+  public void run() {
+    Random r = new Random();
+    int numRooms = r.nextInt(1) + 5; // Random number of rooms between 5 and 6
 
-		for (int i = 0; i < numRooms; i++) {
-			rooms[i] = new Room(r.nextInt(10) + 1, r.nextInt(10) + 1,
-					new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
+    Level level = new Level();
 
-			if (i != 0) {
-				// rooms[i] är ditt current rum
-				rooms[i-1].connectNorthTo(rooms[i]);
-				rooms[i].connectSouthTo(rooms[i-1]); //Detta gör att vi får en dubbelriktad graf
-			}
-		}
-	}
+    Room[] rooms = new Room[numRooms];
+
+    for (int i = 0; i < numRooms; i++) {
+      rooms[i] = new Room(r.nextInt(10) + 1, r.nextInt(10) + 1,
+          new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
+      
+      level.place(rooms[i], r.nextInt(10), r.nextInt(10));
+
+      if (i != 0) {
+        // rooms[i] är ditt current rum
+        rooms[i - 1].connectNorthTo(rooms[i]);
+        rooms[i].connectSouthTo(rooms[i - 1]); // Detta gör att vi får en dubbelriktad graf
+      }
+    }
+  }
 
 }

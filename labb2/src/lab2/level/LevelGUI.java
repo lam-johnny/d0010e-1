@@ -23,9 +23,7 @@ public class LevelGUI implements Observer {
     JFrame frame = new JFrame(name);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    // TODO: You should change 200 to a value
-    // depending on the size of the level
-    d = new Display(lv, 200, 200);
+    d = new Display(lv, 500, 500);
 
     frame.getContentPane().add(d);
     frame.pack();
@@ -38,8 +36,10 @@ public class LevelGUI implements Observer {
   }
 
   private class Display extends JPanel {
+    Level lv;
 
     public Display(Level fp, int x, int y) {
+      this.lv = fp;
 
       addKeyListener(new Listener());
 
@@ -51,6 +51,16 @@ public class LevelGUI implements Observer {
     public void paintComponent(Graphics g) {
       super.paintComponent(g);
 
+      // Draw the rooms
+      for (Room room: this.lv.rooms) {
+        g.setColor(Color.BLACK);
+        g.drawRect(room.x, room.y, room.width, room.height);
+        g.setColor(room.floorColor);
+        g.fillRect(room.x, room.y, room.width, room.height);
+      }
+      
+      // TODO: Draw corridors
+      g.drawLine(0, 0, 100, 100); //Ritar ett streck:))
     }
 
     private class Listener implements KeyListener {

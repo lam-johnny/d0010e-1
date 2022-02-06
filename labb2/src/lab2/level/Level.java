@@ -39,4 +39,41 @@ public class Level extends Observable {
     this.currentRoom = r;
     this.blockRooms = true;
   }
+
+  void move(char direction){ //Flyttar spelare till nästa rum
+    switch (direction){
+      case 'n':
+        if(currentRoom.northDoor != null){
+          currentRoom = currentRoom.northDoor;
+          setChanged();
+          notifyObservers();
+        }
+        break;
+      case 's':
+        if(currentRoom.southDoor != null){
+          currentRoom = currentRoom.southDoor;
+          setChanged();
+          notifyObservers();
+        }
+        break;
+      case 'e':
+        if(currentRoom.eastDoor != null){
+          currentRoom = currentRoom.eastDoor;
+          setChanged();
+          notifyObservers();
+        }
+        break;
+      case 'w':
+        if(currentRoom.westDoor != null){
+          currentRoom = currentRoom.westDoor;
+          setChanged();
+          notifyObservers();
+        }
+        break;
+      default:
+        break;
+    }
+
+  }
+
 }

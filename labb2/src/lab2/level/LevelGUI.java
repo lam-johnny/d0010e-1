@@ -52,6 +52,7 @@ public class LevelGUI implements Observer {
       super.paintComponent(g);
       makeRoom(g);
       makeCorridor(g);
+      makePlayer(g);
     }
 
     private void makeRoom(Graphics g) {
@@ -76,13 +77,22 @@ public class LevelGUI implements Observer {
         }
         if (room.northDoor != null) {
           g.setColor(room.northDoor.floorColor);
-          g.fillRect(room.x + 4 * (room.width / 10), room.y, 2 * (room.width / 10), 3);
+          g.fillRect(room.x + 4 * (room.width / 10), room.y, 3 * (room.width / 10), 3);
         }
         if (room.southDoor != null) {
           g.setColor(room.southDoor.floorColor);
-          g.fillRect(room.x + 4 * (room.width / 10), room.y + room.height - 3, 2 * (room.width / 10), 3);
+          g.fillRect(room.x + 4 * (room.width / 10), room.y + room.height - 3, 3 * (room.width / 10), 3);
         }
       }
+    }
+
+    private void makePlayer(Graphics g){ //skapar en liten cirkel för att visa vart spelaren är
+      g.setColor(Color.BLACK);
+      g.drawOval(lv.currentRoom.x + lv.currentRoom.width/2, lv.currentRoom.y + lv.currentRoom.height/2, 10, 10);
+      Color dataGul = new Color(255, 204, 17);
+      g.setColor(dataGul);
+      g.fillOval(lv.currentRoom.x + lv.currentRoom.width/2, lv.currentRoom.y + lv.currentRoom.height/2, 10, 10);
+
     }
 
 

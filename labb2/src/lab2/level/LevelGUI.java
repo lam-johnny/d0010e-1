@@ -29,10 +29,11 @@ public class LevelGUI implements Observer {
     frame.pack();
     frame.setLocation(0, 0);
     frame.setVisible(true);
+    lv.addObserver(this);
   }
 
   public void update(Observable arg0, Object arg1) {
-
+    d.repaint();
   }
 
   private class Display extends JPanel {
@@ -98,6 +99,22 @@ public class LevelGUI implements Observer {
     private class Listener implements KeyListener {
 
       public void keyPressed(KeyEvent arg0) {
+        switch(arg0.getKeyChar()){
+          case 'w':
+            lv.move('n');
+            break;
+          case 'a':
+            lv.move('w');
+            break;
+          case 's':
+            lv.move('s');
+            break;
+          case 'd':
+            lv.move('e');
+            break;
+          default:
+            break;
+        }
       }
 
       public void keyReleased(KeyEvent arg0) {

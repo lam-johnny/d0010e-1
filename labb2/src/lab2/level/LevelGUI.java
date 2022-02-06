@@ -50,18 +50,42 @@ public class LevelGUI implements Observer {
 
     public void paintComponent(Graphics g) {
       super.paintComponent(g);
+      makeRoom(g);
+      makeCorridor(g);
+    }
 
-      // Draw the rooms
-      for (Room room: this.lv.rooms) {
+    private void makeRoom(Graphics g) {
+      for (Room room : this.lv.rooms) {
         g.setColor(Color.BLACK);
         g.drawRect(room.x, room.y, room.width, room.height);
         g.setColor(room.floorColor);
         g.fillRect(room.x, room.y, room.width, room.height);
       }
-      
-      // TODO: Draw corridors
-      g.drawLine(0, 0, 100, 100); //Ritar ett streck:))
     }
+
+    private void makeCorridor(Graphics g) {
+      for (Room room : this.lv.rooms) {
+
+        if (room.westDoor != null) {
+          g.setColor(room.westDoor.floorColor); //Sätter dörren till nästa rums färg
+          g.fillRect(room.x, room.y + 4 * (room.height / 10), 3, 2 * (room.height / 10)); //Ritar dörr
+        }
+        if (room.eastDoor != null) {
+          g.setColor(room.eastDoor.floorColor);
+          g.fillRect(room.x + room.width - 3, room.y + 4 * (room.height / 10), 3, 2 * (room.height / 10));
+        }
+        if (room.northDoor != null) {
+          g.setColor(room.northDoor.floorColor);
+          g.fillRect(room.x + 4 * (room.width / 10), room.y, 2 * (room.width / 10), 3);
+        }
+        if (room.southDoor != null) {
+          g.setColor(room.southDoor.floorColor);
+          g.fillRect(room.x + 4 * (room.width / 10), room.y + room.height - 3, 2 * (room.width / 10), 3);
+        }
+      }
+    }
+
+
 
     private class Listener implements KeyListener {
 

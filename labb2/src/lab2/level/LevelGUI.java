@@ -53,6 +53,7 @@ public class LevelGUI implements Observer {
       super.paintComponent(g);
       makeRoom(g);
       makeCorridor(g);
+      makePath(g);
       makePlayer(g);
     }
 
@@ -83,6 +84,25 @@ public class LevelGUI implements Observer {
         if (room.southDoor != null) {
           g.setColor(room.southDoor.floorColor);
           g.fillRect(room.x + 4 * (room.width / 10), room.y + room.height - 3, 3 * (room.width / 10), 3);
+        }
+      }
+    }
+
+    private void makePath(Graphics g){
+      g.setColor(Color.red);
+      Room prevRoom = this.lv.rooms.get(lv.rooms.size() - 1);
+      for(Room room: this.lv.rooms){
+        if(lv.currentRoom.northDoor != null){
+          g.drawLine(prevRoom.x+prevRoom.width/2, prevRoom.y, room.x+ room.width/2, room.y+room.height/2);
+        }
+        if(lv.currentRoom.southDoor != null){
+
+        }
+        if(lv.currentRoom.eastDoor != null){
+
+        }
+        if(lv.currentRoom.westDoor != null){
+
         }
       }
     }

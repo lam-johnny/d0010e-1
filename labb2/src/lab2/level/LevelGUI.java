@@ -95,8 +95,6 @@ public class LevelGUI implements Observer {
 
     }
 
-
-
     private class Listener implements KeyListener {
 
       public void keyPressed(KeyEvent arg0) {

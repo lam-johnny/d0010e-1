@@ -36,12 +36,14 @@ public class Level extends Observable {
 
 
   public void firstLocation(Room r) {
-    this.currentRoom = r;
+    if (!blockRooms) {
+      this.currentRoom = r;
+    }
     this.blockRooms = true;
   }
 
-  void move(char direction){ //Flyttar spelare till nästa rum
-    switch (direction){
+  void move(char direction) { //Flyttar spelare till nästa rum
+    switch (direction) {
       case 'n':
         if(currentRoom.northDoor != null){
           currentRoom = currentRoom.northDoor;

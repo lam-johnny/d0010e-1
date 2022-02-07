@@ -104,7 +104,6 @@ public class LevelGUI implements Observer {
       }
     }
 
-
     private void makePlayer(Graphics g) { //skapar en liten cirkel för att visa vart spelaren är
       g.setColor(Color.BLACK);
       g.drawOval(lv.currentRoom.x + lv.currentRoom.width / 2, lv.currentRoom.y + lv.currentRoom.height / 2, 10, 10);
